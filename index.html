@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Live override style applied by admin dashboard -->
+    <style id="live-style"></style>
+</head>
+<body>
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="overlay hidden">
+        <div class="overlay-card">
+            <h2>Sign in</h2>
+            <p class="muted">Admin gets dashboard superpowers</p>
+            <form id="login-form">
+                <label>
+                    <span>Username</span>
+                    <input id="login-username" type="text" autocomplete="username" required />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input id="login-password" type="password" autocomplete="current-password" required />
+                </label>
+                <button type="submit">Login</button>
+                <p id="login-error" class="error hidden">Invalid credentials</p>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>2048</h1>
+            <div class="scores">
+                <div class="score-container">
+                    <div class="score-title">SCORE</div>
+                    <div id="score">0</div>
+                </div>
+                <div class="score-container">
+                    <div class="score-title">BEST</div>
+                    <div id="best-score">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="game-intro">
+            <p>Join the numbers and get to the <strong>2048 tile!</strong></p>
+            <button id="new-game">New Game</button>
+        </div>
+        
+        <!-- Admin Dashboard (visible only to admin) -->
+        <div id="admin-dashboard" class="admin hidden">
+            <div class="admin-tabs">
+                <button class="tab-button active" data-tab="tab-settings">Settings</button>
+                <button class="tab-button" data-tab="tab-style">Style Editor</button>
+                <button class="tab-button" data-tab="tab-qa">QA / Self-Test</button>
+                <button id="logout" class="right">Logout</button>
+            </div>
+            <div class="admin-panels">
+                <section id="tab-settings" class="tab active">
+                    <div class="grid-2">
+                        <label>
+                            <span>Animation duration (ms)</span>
+                            <input id="cfg-anim" type="number" min="50" max="1000" step="10" value="150" />
+                        </label>
+                        <label>
+                            <span>Win target</span>
+                            <input id="cfg-win" type="number" min="128" step="128" value="2048" />
+                        </label>
+                        <label>
+                            <span>New tile: 4 probability (%)</span>
+                            <input id="cfg-prob4" type="number" min="0" max="100" value="10" />
+                        </label>
+                        <label>
+                            <span>OpenAI API key (optional)</span>
+                            <input id="cfg-openai" type="password" placeholder="sk-..." />
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button id="btn-apply-settings">Apply</button>
+                        <button id="btn-reset-best">Reset Best Score</button>
+                        <button id="btn-download-css">Download CSS</button>
+                    </div>
+                </section>
+                <section id="tab-style" class="tab">
+                    <div class="editor">
+                        <textarea id="css-editor" spellcheck="false" placeholder="/* Live CSS overrides here */"></textarea>
+                    </div>
+                    <div class="actions">
+                        <button id="btn-apply-css">Apply CSS</button>
+                        <button id="btn-clear-css">Clear CSS</button>
+                    </div>
+                </section>
+                <section id="tab-qa" class="tab">
+                    <div class="actions">
+                        <button id="btn-selftest">Run Self-Test</button>
+                        <button id="btn-ai-fix">AI Suggest Fix</button>
+                    </div>
+                    <pre id="qa-output" class="output"></pre>
+                </section>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <div class="grid"></div>
+            <div class="game-over">
+                <p>Game Over!</p>
+                <button id="try-again">Try Again</button>
+            </div>
+            <div class="win">
+                <p>You Win!</p>
+                <button id="keep-going">Keep Going</button>
+            </div>
+        </div>
+        <p class="game-explanation">
+            <strong>HOW TO PLAY:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+        </p>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

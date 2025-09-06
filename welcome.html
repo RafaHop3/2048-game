@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game - Welcome</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .welcome-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        .game-title {
+            font-size: 72px;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        .game-subtitle {
+            font-size: 28px;
+            color: #4a5568;
+            margin-bottom: 40px;
+        }
+        .play-button {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 25px 60px;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        .play-button:hover {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(72, 187, 120, 0.4);
+        }
+        .instructions {
+            font-size: 20px;
+            color: #718096;
+            line-height: 1.6;
+            margin-top: 30px;
+        }
+        .instructions strong { color: #2d3748; }
+        @media (max-width: 768px) {
+            .game-title { font-size: 56px; }
+            .game-subtitle { font-size: 24px; }
+            .play-button { font-size: 28px; padding: 20px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1 class="game-title">2048</h1>
+        <p class="game-subtitle">The Classic Number Puzzle Game</p>
+        <button class="play-button" onclick="startGame()">ðŸŽ® PLAY GAME</button>
+        <div class="instructions">
+            <p><strong>How to Play:</strong></p>
+            <p>Use arrow keys to move tiles</p>
+            <p>Combine matching numbers to reach 2048!</p>
+            <p><strong>Simple and Fun!</strong></p>
+        </div>
+    </div>
+    <script>
+        function startGame() {
+            window.location.href = 'index.html';
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                startGame();
+            }
+        });
+    </script>
+</body>
+</html>
